@@ -1,0 +1,12 @@
+from preloaded import Node
+
+def linked_list_from_string(list_repr: str) -> Node | None:
+
+    parts = list_repr.split(" -> ")
+
+    node = None
+    
+    for value in reversed(parts[:-1]):
+        node = Node(int(value), node)
+        
+    return node
