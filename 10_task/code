@@ -1,0 +1,32 @@
+class Node(object):
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+    
+class Context(object):
+    def __init__(self, first, second):
+        self.first = first
+        self.second = second
+    
+def alternating_split(head):
+    if head is None or head.next is None:
+        raise ValueError("Error")
+
+    first_start = head
+    second_start = head.next
+    
+    curr = head
+    while curr and curr.next:
+        first = curr
+        second = curr.next
+        
+        first.next = second.next
+        
+        if second.next:
+            second.next = second.next.next
+        else:
+            second.next = None
+            
+        curr = first.next
+
+    return Context(first_start, second_start)
