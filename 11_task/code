@@ -1,0 +1,10 @@
+def loop_size(node):
+    if not node:
+        return node
+    used = []
+    while node.next:
+        if node in used:
+            result = len(used) - used.index(node)
+            return result
+        used.append(node)
+        node = node.next
